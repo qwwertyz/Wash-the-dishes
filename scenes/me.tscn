@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://hihjqsk4wa63"]
+
+[ext_resource type="Texture2D" uid="uid://trjadcsugahk" path="res://images/pixel_cat_no_background_cute_n.jpeg" id="1_4snj4"]
+[ext_resource type="PackedScene" uid="uid://bu6dpuok4f17a" path="res://kenney_platformer-kit/Models/FBX format/barrel.fbx" id="2_ktyro"]
+[ext_resource type="PackedScene" uid="uid://cb5rat1m8hg6h" path="res://scenes/character_body_3d.tscn" id="3_plysd"]
+[ext_resource type="PackedScene" uid="uid://bxxmv44jyir6v" path="res://kenney_platformer-kit/Models/FBX format/grass.fbx" id="4_boive"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4snj4"]
+
+[sub_resource type="Sky" id="Sky_ktyro"]
+sky_material = SubResource("ProceduralSkyMaterial_4snj4")
+
+[sub_resource type="Environment" id="Environment_kc1f0"]
+background_mode = 2
+sky = SubResource("Sky_ktyro")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+visible = false
+billboard = 1
+alpha_cut = 1
+texture = ExtResource("1_4snj4")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.877801, 0.026899, -0.47827, -0.0416466, 0.998927, -0.0202549, 0.477212, 0.037698, 0.87798, -18.4733, 7.42297, 29.0382)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kc1f0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.855002, 0.518625, -1.47958e-07, -0.460193, 0.758672, 0.461129, 0.239153, -0.394266, 0.887333, 0, 28.7821, 0.368228)
+
+[node name="barrel" parent="." instance=ExtResource("2_ktyro")]
+transform = Transform3D(19.77, 0, 0, 0, 19.77, 0, 0, 0, 19.77, 4.49506, 4.15532, 13.007)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(-0.969716, -0.176566, -0.168745, 0.227335, -0.399998, -0.887874, 0.089271, -0.899348, 0.428024, 11.7845, 5.71862, -6.20206)
+light_color = Color(0.875316, 0.508122, 1, 1)
+light_energy = 11.99
+shadow_enabled = true
+omni_range = 44.0675
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.547081, 0, -0.83708, 0, 1, 0, 0.83708, 0, -0.547081, 0, 0, 0)
+light_color = Color(0.880981, 0.95975, 1.54018e-06, 1)
+spot_range = 57.4663
+spot_attenuation = -0.1
+spot_angle = 89.99
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("3_plysd")]
+transform = Transform3D(-0.547081, 0, -0.83708, 0, 1, 0, 0.83708, 0, -0.547081, 0, 0, 0)
+
+[node name="grass" parent="." instance=ExtResource("4_boive")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.5109, 32.0033, -23.6291)
