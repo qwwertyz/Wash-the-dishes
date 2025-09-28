@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=4 uid="uid://csemegspsknab"]
+
+[ext_resource type="Script" uid="uid://d0l202tjut6io" path="res://scripts/living_room.gd" id="1_mkmp1"]
+[ext_resource type="PackedScene" uid="uid://bpmm5ok20fqsy" path="res://scenes/Player.tscn" id="2_0grwd"]
+[ext_resource type="TileSet" uid="uid://bsukrtjofu8uw" path="res://assets/Tilesets/house_tile_set.tres" id="4_mkmp1"]
+[ext_resource type="PackedScene" uid="uid://cdq3s7wr2fxud" path="res://scenes/door.tscn" id="4_pwtdf"]
+
+[node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_mkmp1")
+
+[node name="HouseTilemap" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="house" type="TileMapLayer" parent="HouseTilemap"]
+position = Vector2(-17, -7)
+tile_map_data = PackedByteArray("AAAHAAQAAAABAAEAAAAHAAUAAAABAAEAAAAHAAYAAAABAAEAAAAHAAcAAAABAAEAAAAHAAgAAAABAAEAAAAIAAQAAAABAAEAAAAIAAUAAAABAAEAAAAIAAYAAAABAAEAAAAIAAcAAAABAAEAAAAIAAgAAAABAAEAAAAJAAQAAAABAAEAAAAJAAUAAAABAAEAAAAJAAYAAAABAAEAAAAJAAcAAAABAAEAAAAJAAgAAAABAAEAAAAKAAQAAAABAAEAAAAKAAUAAAABAAEAAAAKAAYAAAABAAEAAAAKAAcAAAABAAEAAAAKAAgAAAABAAEAAAALAAQAAAABAAEAAAALAAUAAAABAAEAAAALAAYAAAABAAEAAAALAAcAAAABAAEAAAALAAgAAAABAAEAAAAMAAQAAAABAAEAAAAMAAUAAAABAAEAAAAMAAYAAAABAAEAAAAMAAcAAAABAAEAAAAMAAgAAAABAAEAAAANAAQAAAABAAEAAAANAAUAAAABAAEAAAANAAYAAAABAAEAAAANAAcAAAABAAEAAAANAAgAAAABAAEAAAAOAAQAAAABAAEAAAAOAAUAAAABAAEAAAAOAAYAAAABAAEAAAAOAAcAAAABAAEAAAAOAAgAAAABAAEAAAAPAAQAAAABAAEAAAAPAAUAAAABAAEAAAAPAAYAAAABAAEAAAAPAAcAAAABAAEAAAAPAAgAAAABAAEAAAA=")
+tile_set = ExtResource("4_mkmp1")
+
+[node name="walls" type="TileMapLayer" parent="HouseTilemap"]
+position = Vector2(-17, -7)
+tile_map_data = PackedByteArray("AAAQAAQAAAACAAAAAAAQAAUAAAACAAEAAAAQAAYAAAACAAEAAAAQAAcAAAACAAEAAAAQAAgAAAACAAEAAAAHAAkAAAABAAIAAAAIAAkAAAABAAIAAAAJAAkAAAABAAIAAAAKAAkAAAABAAIAAAALAAkAAAABAAIAAAAMAAkAAAABAAIAAAANAAkAAAABAAIAAAAOAAkAAAABAAIAAAAPAAkAAAABAAIAAAAQAAkAAAACAAIAAAAGAAkAAAAAAAIAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAEAAAAGAAYAAAAAAAEAAAAGAAcAAAAAAAEAAAAGAAgAAAAAAAEAAAAHAAQAAAABAAAAAAAIAAQAAAABAAAAAAAKAAQAAAABAAAAAAALAAQAAAABAAAAAAAMAAQAAAABAAAAAAANAAQAAAABAAAAAAAOAAQAAAABAAAAAAAPAAQAAAABAAAAAAA=")
+tile_set = ExtResource("4_mkmp1")
+
+[node name="furniture" type="TileMapLayer" parent="HouseTilemap"]
+y_sort_enabled = true
+position = Vector2(-17, -7)
+tile_map_data = PackedByteArray("AAAOAAUAAQACAAEAAAANAAUAAQADAAIAAAAOAAcAAQAFAAUAAAAPAAUAAQADAAMAAAAPAAYAAQADAAMAAAAHAAYAAQADAAMAAAAIAAYAAQAFAAIAAAAOAAQAAQAGAAMAAAA=")
+tile_set = ExtResource("4_mkmp1")
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="Door_N" parent="Doors" instance=ExtResource("4_pwtdf")]
+position = Vector2(135, 65)
+destination_scene = "living_room"
+destination_door = "N"
+spawn_direction = "front"
+
+[node name="CollisionShape2D" parent="Doors/Door_N/InteractableComponent" index="0"]
+position = Vector2(1, 7)
+
+[node name="SpawnLocation" parent="Doors/Door_N" index="3"]
+position = Vector2(0, 21)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_0grwd")]
+position = Vector2(183, 100)
+
+[editable path="Doors/Door_N"]

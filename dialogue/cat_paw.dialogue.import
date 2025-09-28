@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bdkf364nl6k5a"
+path="res://.godot/imported/cat_paw.dialogue-cc4607806d442dac7a183a91cc0d056c.tres"
+
+[deps]
+
+source_file="res://dialogue/cat_paw.dialogue"
+dest_files=["res://.godot/imported/cat_paw.dialogue-cc4607806d442dac7a183a91cc0d056c.tres"]
+
+[params]
+
+defaults=true

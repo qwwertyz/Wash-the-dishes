@@ -1,11 +1,25 @@
-[gd_scene load_steps=4 format=4 uid="uid://csemegspsknab"]
+[gd_scene load_steps=12 format=4 uid="uid://csemegspsknab"]
 
+[ext_resource type="Script" uid="uid://d0l202tjut6io" path="res://scripts/living_room.gd" id="1_mkmp1"]
 [ext_resource type="PackedScene" uid="uid://bpmm5ok20fqsy" path="res://scenes/Player.tscn" id="2_0grwd"]
 [ext_resource type="TileSet" uid="uid://bsukrtjofu8uw" path="res://assets/Tilesets/house_tile_set.tres" id="4_mkmp1"]
 [ext_resource type="PackedScene" uid="uid://cdq3s7wr2fxud" path="res://scenes/door.tscn" id="4_pwtdf"]
+[ext_resource type="Texture2D" uid="uid://db1oqu56slj6u" path="res://assets/Sprite sheets/Mouse sprites/Catpaw holding Mouse icon.png" id="5_tjgix"]
+[ext_resource type="PackedScene" uid="uid://df1imjhhtul60" path="res://scenes/actionable.tscn" id="6_xunnl"]
+[ext_resource type="Resource" uid="uid://bdkf364nl6k5a" path="res://dialogue/cat_paw.dialogue" id="7_0w1sy"]
+[ext_resource type="Texture2D" uid="uid://c6wd2ww06xjce" path="res://icon.svg" id="8_0w1sy"]
+[ext_resource type="Resource" uid="uid://bgh6vpp0fqpl6" path="res://dialogue/table.dialogue" id="9_hdjrh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hdjrh"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lj4hb"]
+size = Vector2(142.923, 126.293)
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
+position = Vector2(-1, 3)
+script = ExtResource("1_mkmp1")
 
 [node name="HouseTilemap" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -23,21 +37,47 @@ tile_set = ExtResource("4_mkmp1")
 [node name="furniture" type="TileMapLayer" parent="HouseTilemap"]
 y_sort_enabled = true
 position = Vector2(-17, -7)
-tile_map_data = PackedByteArray("AAAOAAUAAQACAAEAAAANAAUAAQADAAIAAAAOAAcAAQAFAAUAAAAPAAUAAQADAAMAAAAPAAYAAQADAAMAAAAHAAYAAQADAAMAAAAIAAYAAQAFAAIAAAAOAAQAAQAGAAMAAAA=")
+tile_map_data = PackedByteArray("AAAOAAUAAQACAAEAAAANAAUAAQADAAIAAAAOAAcAAQAFAAUAAAAPAAUAAQADAAMAAAAPAAYAAQADAAMAAAAIAAYAAQAFAAIAAAAOAAQAAQAGAAMAAAA=")
 tile_set = ExtResource("4_mkmp1")
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_0grwd")]
-position = Vector2(183, 100)
 
 [node name="Doors" type="Node2D" parent="."]
 
 [node name="Door_N" parent="Doors" instance=ExtResource("4_pwtdf")]
 position = Vector2(135, 65)
 destination_scene = "living_room"
-destination_door = "S"
-spawn_direction = "down"
+destination_door = "N"
+spawn_direction = "front"
+
+[node name="CollisionShape2D" parent="Doors/Door_N/InteractableComponent" index="0"]
+position = Vector2(0, 9)
 
 [node name="SpawnLocation" parent="Doors/Door_N" index="3"]
-position = Vector2(0, 13)
+position = Vector2(0, 21)
+
+[node name="You" parent="." instance=ExtResource("2_0grwd")]
+position = Vector2(183, 100)
+
+[node name="paw" type="Sprite2D" parent="."]
+position = Vector2(230, 98)
+texture = ExtResource("5_tjgix")
+
+[node name="Actionable" parent="paw" instance=ExtResource("6_xunnl")]
+dialogue_resource = ExtResource("7_0w1sy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="paw/Actionable"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_hdjrh")
+
+[node name="table" type="Sprite2D" parent="."]
+position = Vector2(104.5, 99.75)
+scale = Vector2(0.101563, 0.292969)
+texture = ExtResource("8_0w1sy")
+
+[node name="Actionable" parent="table" instance=ExtResource("6_xunnl")]
+dialogue_resource = ExtResource("9_hdjrh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="table/Actionable"]
+position = Vector2(14.7691, 0.853332)
+shape = SubResource("RectangleShape2D_lj4hb")
 
 [editable path="Doors/Door_N"]

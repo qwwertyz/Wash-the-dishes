@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bpmm5ok20fqsy"]
+[gd_scene load_steps=26 format=3 uid="uid://bpmm5ok20fqsy"]
 
 [ext_resource type="Script" uid="uid://s4mlv2lf3hup" path="res://scripts/character_body_2d.gd" id="1_v6fml"]
 [ext_resource type="Texture2D" uid="uid://dawytlxow7oim" path="res://assets/Characters/Basic Charakter Spritesheet.png" id="2_3li8b"]
@@ -159,19 +159,109 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kc1f0"]
-radius = 4.24264
+radius = 5.0
+
+[sub_resource type="Animation" id="Animation_v6fml"]
+resource_name = "actionable_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Direction/ActionableFinder/CollisionShape2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.0106192, 0.0329506)]
+}
+
+[sub_resource type="Animation" id="Animation_3li8b"]
+resource_name = "actionable_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Direction/ActionableFinder/CollisionShape2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.0318576, 0.0329516)]
+}
+
+[sub_resource type="Animation" id="Animation_mdl7e"]
+resource_name = "actionable_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Direction/ActionableFinder/CollisionShape2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.021, -0.231)]
+}
+
+[sub_resource type="Animation" id="Animation_qu4a1"]
+resource_name = "actionable_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Direction/ActionableFinder/CollisionShape2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.0212384, 0.230652)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3li8b"]
+_data = {
+&"actionable_down": SubResource("Animation_qu4a1"),
+&"actionable_left": SubResource("Animation_v6fml"),
+&"actionable_right": SubResource("Animation_3li8b"),
+&"actionable_up": SubResource("Animation_mdl7e")
+}
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 y_sort_enabled = true
+position = Vector2(-1, 0)
 collision_layer = 2
 script = ExtResource("1_v6fml")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_ktyro")
-animation = &"idle_left"
+animation = &"idle_right"
 autoplay = "idle_front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(1, 2)
+shape = SubResource("CircleShape2D_kc1f0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3li8b")
+}
+
+[node name="Direction" type="Marker2D" parent="."]
+position = Vector2(-11, 0)
+rotation = 3.14159
+scale = Vector2(565.014, -30.3489)
+
+[node name="ActionableFinder" type="Area2D" parent="Direction"]
+position = Vector2(4.48694e-09, 0.0329501)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Direction/ActionableFinder"]
+position = Vector2(-0.021, -0.231)
+rotation = -3.14159
+scale = Vector2(0.00176987, -0.0329501)
 shape = SubResource("CircleShape2D_kc1f0")

@@ -1,9 +1,105 @@
-[gd_scene load_steps=5 format=4 uid="uid://dp2pb2vgea4cc"]
+[gd_scene load_steps=24 format=4 uid="uid://dp2pb2vgea4cc"]
 
 [ext_resource type="TileSet" uid="uid://bsukrtjofu8uw" path="res://assets/Tilesets/house_tile_set.tres" id="1_1ibh8"]
 [ext_resource type="Script" uid="uid://d0l202tjut6io" path="res://scripts/living_room.gd" id="1_57yok"]
 [ext_resource type="PackedScene" uid="uid://bpmm5ok20fqsy" path="res://scenes/Player.tscn" id="2_a7140"]
 [ext_resource type="PackedScene" uid="uid://cdq3s7wr2fxud" path="res://scenes/door.tscn" id="3_dxoax"]
+[ext_resource type="Texture2D" uid="uid://bf4gux17jdu2l" path="res://assets/Tilesets/Doors.png" id="5_fbsx8"]
+[ext_resource type="PackedScene" uid="uid://df1imjhhtul60" path="res://scenes/actionable.tscn" id="6_exyd1"]
+[ext_resource type="Resource" uid="uid://d2t286nq4tfua" path="res://dialogue/house_door.dialogue" id="7_tcv1k"]
+[ext_resource type="Script" uid="uid://djb8ldgaw4lvn" path="res://scripts/pan.gd" id="9_fbsx8"]
+[ext_resource type="Texture2D" uid="uid://c6wd2ww06xjce" path="res://icon.svg" id="9_sc017"]
+[ext_resource type="Script" uid="uid://co8b0jjxy84nt" path="res://scripts/actionable.gd" id="10_exyd1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvdjg"]
+atlas = ExtResource("5_fbsx8")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83dcw"]
+atlas = ExtResource("5_fbsx8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_la1wf"]
+atlas = ExtResource("5_fbsx8")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18pbm"]
+atlas = ExtResource("5_fbsx8")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5w8r"]
+atlas = ExtResource("5_fbsx8")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t58dd"]
+atlas = ExtResource("5_fbsx8")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ju5n0"]
+atlas = ExtResource("5_fbsx8")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgbum"]
+atlas = ExtResource("5_fbsx8")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pg2b6"]
+atlas = ExtResource("5_fbsx8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ey00f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvdjg")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83dcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_la1wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18pbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5w8r")
+}],
+"loop": false,
+"name": &"door_close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t58dd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ju5n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgbum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pg2b6")
+}],
+"loop": false,
+"name": &"door_open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ayau"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbsx8"]
+size = Vector2(15, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tcv1k"]
+size = Vector2(256, 219.092)
 
 [node name="LivingRoom" type="Node2D"]
 script = ExtResource("1_57yok")
@@ -21,22 +117,22 @@ tile_set = ExtResource("1_1ibh8")
 
 [node name="furniture" type="TileMapLayer" parent="HouseTilemap"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAADAAMAAQADAAMAAAAEAAMAAQADAAMAAAAFAAMAAQADAAMAAAAGAAMAAQADAAMAAAAHAAMAAQADAAMAAAADAAQAAQADAAMAAAADAAUAAQADAAMAAAALAAYAAQAEAAIAAAAMAAYAAQADAAMAAAANAAYAAQAFAAIAAAAEAAUAAQADAAMAAAAFAAUAAQADAAMAAAAGAAUAAQADAAMAAAA=")
+tile_map_data = PackedByteArray("AAADAAMAAQADAAMAAAAEAAMAAQADAAMAAAAFAAMAAQADAAMAAAAGAAMAAQADAAMAAAAHAAMAAQADAAMAAAADAAQAAQADAAMAAAADAAUAAQADAAMAAAAEAAUAAQADAAMAAAAFAAUAAQADAAMAAAALAAYAAQADAAMAAAAMAAYAAQAFAAIAAAAKAAYAAQAEAAIAAAA=")
 tile_set = ExtResource("1_1ibh8")
-
-[node name="CharacterBody2D" parent="HouseTilemap" instance=ExtResource("2_a7140")]
-position = Vector2(182, 66)
 
 [node name="Doors" type="Node" parent="."]
 
 [node name="Door_N" parent="Doors" instance=ExtResource("3_dxoax")]
 position = Vector2(184, 40)
 destination_scene = "bedroom"
-destination_door = "S"
-spawn_direction = "down"
+destination_door = "N"
+spawn_direction = "front"
+
+[node name="CollisionShape2D" parent="Doors/Door_N/InteractableComponent" index="0"]
+position = Vector2(0, 5.8125)
 
 [node name="SpawnLocation" parent="Doors/Door_N" index="3"]
-position = Vector2(0, 22)
+position = Vector2(0, 23)
 
 [node name="Door_W" parent="Doors" instance=ExtResource("3_dxoax")]
 position = Vector2(66, 111)
@@ -45,11 +141,55 @@ destination_door = "E"
 spawn_direction = "right"
 
 [node name="CollisionShape2D" parent="Doors/Door_W/InteractableComponent" index="0"]
-position = Vector2(1, 0)
+position = Vector2(1.5, 0)
 rotation = -1.5708
 
 [node name="SpawnLocation" parent="Doors/Door_W" index="3"]
 position = Vector2(21, 0)
+
+[node name="HouseDoor" type="StaticBody2D" parent="Doors"]
+position = Vector2(235, 111)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Doors/HouseDoor"]
+sprite_frames = SubResource("SpriteFrames_ey00f")
+autoplay = "default"
+
+[node name="Actionable" parent="Doors/HouseDoor" instance=ExtResource("6_exyd1")]
+dialogue_resource = ExtResource("7_tcv1k")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Doors/HouseDoor/Actionable"]
+shape = SubResource("RectangleShape2D_4ayau")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/HouseDoor"]
+shape = SubResource("RectangleShape2D_fbsx8")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_a7140")]
+position = Vector2(182, 66)
+
+[node name="pan" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(71, 55)
+scale = Vector2(0.0429688, 0.0507812)
+texture = ExtResource("9_sc017")
+script = ExtResource("9_fbsx8")
+
+[node name="Actionable" type="Area2D" parent="pan"]
+position = Vector2(10.3784, 24.7395)
+collision_layer = 8
+script = ExtResource("10_exyd1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pan/Actionable"]
+position = Vector2(1.25793, 102.022)
+shape = SubResource("RectangleShape2D_tcv1k")
+
+[node name="Tutorial" type="Label" parent="pan"]
+z_index = 1
+offset_left = -628.363
+offset_top = -768.001
+offset_right = 1828.64
+offset_bottom = -419.001
+theme_override_font_sizes/font_size = 256
+text = "Press \"E\" to interact"
 
 [editable path="Doors/Door_N"]
 [editable path="Doors/Door_W"]
