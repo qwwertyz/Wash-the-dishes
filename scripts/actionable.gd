@@ -6,4 +6,3 @@ signal tutorial_finished
 
 func action():#show balloon when action is actioned
 	tutorial_finished.emit()
-	DialogueManager.show_dialogue_balloon(dialogue_resource,dialogue_start)

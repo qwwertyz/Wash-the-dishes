@@ -11,7 +11,7 @@ func _ready() -> void:
 		var data = get_cell_tile_data(cell)
 		if data.get_custom_data("isEmpty"):
 			empty_cells.push_front(cell)
-		print(data)
+		#print(data)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
