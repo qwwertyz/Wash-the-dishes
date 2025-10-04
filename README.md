@@ -8,73 +8,24 @@
 [![MIT License][license-shield]][license-url]
 
 <!-- HEADER -->
-<br />
-<div align="center">
-    <a href="https://github.com/BudzioT/Godot_Super-Wakatime">
-        <img src="https://cloud-bo1ln2br1-hack-club-bot.vercel.app/0godotwaka22.png"  alt="Godot Wakatime"/>
-    </a>
-    <h3 align="center"> Godot Super Wakatime </h3>
-    <p align="center">
-        Tool to measure time spent in loved by many people game engine - Godot
-        <br />
-        Officially approved to use in High Seas event created by Hack Club
-        <br />
-        <br />
-        <a href="https://godotengine.org/asset-library/asset/3484">Get from Asset Lib</a>
-        ·
-        <a href="https://youtu.be/rqAc-YdVXyM">View Demo</a>
-        ·
-        <a href="https://github.com/BudzioT/Godot_Super-Wakatime/issues/new">Report Bug / Request Feature</a>
-    </p>
-</div>
 
-<!-- CONTENTS -->
-<details>
-    <summary>Table of Contents</summary>
-    <ol>
-        <li>
-            <a href="#about">About The Project</a>
-            <ul>
-                <li><a href="#built-with">Built Using</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#getting-started">Getting Started</a>
-            <ul>
-                <li><a href="#installation">Installation</a></li>
-            </ul>
-        </li>
-        <li><a href="#usage">Usage</a></li>
-        <li><a href="#license">License</a></li>
-    </ol>
-</details>
 
 
 <!-- ABOUT -->
 ## About The Project
-<br />
 
-[![Product Screenshot][product-screenshot]](https://waka.hackclub.com)
-
-This tool can successfully measure time spent building your games or apps in Godot.
-<br />
-Here's why:
-* It differentiates between switching a scene and script
-* It counts key presses as coding and mouse clicks as building scene
-* Changing scene structure results in a heartbeat sent
-* It correctly detects OS, machine name, language, editor, files
-* It can detect your cursor line and position
-* Time is split between: Building, Coding, Testing
-* In the future it will also detect testing your projects
-
-It works on both Linux and Windows, it wasn't tested on macOS yet
-<br />
-You can also see your time spent in the editor itself:
-[![Time in editor][time-screenshot]]
-
-<p align="right">(<a href="#readme-top">top</a>)</p>
+Eat. Sleep. Repeat.
+<br>
 
 
+[Game in progress] this is a little story I made this while having a bad day so don't take it too seriously, it's more about the mood than the actual story.  The idea is that you play as yourself in your little house doing stuff everyday to keep yourself alive.  At some point changes are going to take place and I haven't thought that out yet but I want to keep it lighthearted since a lot of these games gravitate towards psychological horror. 
+
+wasd movement
+
+space dialogue
+
+What I learnt:
+A LOT. I realize you learn a lot more when you're not just blindly following a tutorial from start to end and have some experience already. What I struggled the most with was the back and forth between different nodes with signals and functions, which tend to get messy so you should be careful with through which nodes the signals go. I learnt to use export variables, the dialoguemanager addon, global variables and signals.
 ### Built Using
 I used the Ouch! CLI tool for decompression of files <br />
 This project was built using one simple, yet powerful language.<br />
