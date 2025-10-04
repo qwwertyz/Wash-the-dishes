@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Wash the dishes"
-run/main_scene="uid://mat30yau7b10"
+run/main_scene="uid://csemegspsknab"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

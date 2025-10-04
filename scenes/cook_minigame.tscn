@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=4 uid="uid://mat30yau7b10"]
+[gd_scene load_steps=32 format=4 uid="uid://mat30yau7b10"]
 
 [ext_resource type="TileSet" uid="uid://bsukrtjofu8uw" path="res://assets/Tilesets/house_tile_set.tres" id="1_5k0x5"]
 [ext_resource type="Script" uid="uid://s4mlv2lf3hup" path="res://scripts/character_body_2d.gd" id="2_7hu2e"]
 [ext_resource type="Script" uid="uid://bicrc4siqyk4x" path="res://scripts/walls.gd" id="2_327pv"]
 [ext_resource type="Texture2D" uid="uid://dawytlxow7oim" path="res://assets/Characters/Basic Charakter Spritesheet.png" id="3_bh3yo"]
 [ext_resource type="Texture2D" uid="uid://c6wd2ww06xjce" path="res://icon.svg" id="5_327pv"]
+[ext_resource type="FontFile" uid="uid://bvo8mrrxnf314" path="res://assets/fonts/pixelFont-7-8x14-sproutLands.ttf" id="5_tu472"]
 [ext_resource type="Script" uid="uid://1wrfw36kh22r" path="res://scripts/area_2d.gd" id="7_tu472"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_boive"]
@@ -167,63 +168,15 @@ radius = 5.0
 
 [sub_resource type="Animation" id="Animation_qu4a1"]
 resource_name = "actionable_down"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Direction/ActionableFinder/CollisionShape2D2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-0.0212384, 0.230652)]
-}
 
 [sub_resource type="Animation" id="Animation_v6fml"]
 resource_name = "actionable_left"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Direction/ActionableFinder/CollisionShape2D2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-0.0106192, 0.0329506)]
-}
 
 [sub_resource type="Animation" id="Animation_3li8b"]
 resource_name = "actionable_right"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Direction/ActionableFinder/CollisionShape2D2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-0.0318576, 0.0329516)]
-}
 
 [sub_resource type="Animation" id="Animation_mdl7e"]
 resource_name = "actionable_up"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Direction/ActionableFinder/CollisionShape2D2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-0.021, -0.231)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3li8b"]
 _data = {
@@ -254,7 +207,7 @@ script = ExtResource("2_327pv")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 y_sort_enabled = true
-position = Vector2(152, 62)
+position = Vector2(51, 147)
 collision_layer = 2
 script = ExtResource("2_7hu2e")
 
@@ -273,28 +226,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_3li8b")
 }
 
-[node name="Direction" type="Marker2D" parent="CharacterBody2D"]
-position = Vector2(-11, 0)
-rotation = 3.14159
-scale = Vector2(565.014, -30.3489)
-
-[node name="ActionableFinder" type="Area2D" parent="CharacterBody2D/Direction"]
-position = Vector2(4.48694e-09, 0.0329501)
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D/Direction/ActionableFinder"]
-position = Vector2(-0.021, -0.231)
-rotation = -3.14159
-scale = Vector2(0.00176987, -0.0329501)
-shape = SubResource("CircleShape2D_kc1f0")
-
 [node name="Label" type="Label" parent="."]
-offset_left = 31.0
-offset_top = 8.0
-offset_right = 275.0
-offset_bottom = 31.0
-theme_override_font_sizes/font_size = 16
+offset_left = 40.0
+offset_top = 18.0
+offset_right = 288.0
+offset_bottom = 41.0
+theme_override_fonts/font = ExtResource("5_tu472")
+theme_override_font_sizes/font_size = 12
 text = "Reach the foods to collect them"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

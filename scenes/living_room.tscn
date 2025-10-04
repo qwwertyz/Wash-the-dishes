@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://d2t286nq4tfua" path="res://dialogue/house_door.dialogue" id="7_tcv1k"]
 [ext_resource type="Script" uid="uid://djb8ldgaw4lvn" path="res://scripts/pan.gd" id="9_fbsx8"]
 [ext_resource type="Texture2D" uid="uid://c6wd2ww06xjce" path="res://icon.svg" id="9_sc017"]
-[ext_resource type="Script" uid="uid://co8b0jjxy84nt" path="res://scripts/actionable.gd" id="10_exyd1"]
+[ext_resource type="Script" uid="uid://b7wxham5me1nj" path="res://scenes/actionable_minigame.gd" id="10_fbsx8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvdjg"]
 atlas = ExtResource("5_fbsx8")
@@ -176,7 +176,7 @@ script = ExtResource("9_fbsx8")
 [node name="Actionable" type="Area2D" parent="pan"]
 position = Vector2(10.3784, 24.7395)
 collision_layer = 8
-script = ExtResource("10_exyd1")
+script = ExtResource("10_fbsx8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pan/Actionable"]
 position = Vector2(1.25793, 102.022)

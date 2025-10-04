@@ -11,6 +11,7 @@ func _ready() -> void:
 
 func on_tutorial_finished():
 	tutorial.visible = false
+	print('label should be invisible')
 	get_tree().change_scene_to_file("res://scenes/cook_minigame.tscn")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
